@@ -1,0 +1,396 @@
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* Header styles */
+.app-header {
+  background-color: #2a1a33;
+  color: white;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+}
+
+.app-logo {
+  background-color: #ff9900;
+  color: #2a1a33;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.app-name {
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0 12px;
+  height: 100%;
+}
+
+.nav-link.active {
+  border-bottom: 3px solid #ff9900;
+  font-weight: bold;
+}
+
+/* Container styles */
+.people-table-container {
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+/* Action bar */
+.action-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.action-button {
+  padding: 6px 12px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Table styles */
+.table-responsive {
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.people-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.people-table th {
+  background-color: #4a2e58;
+  color: white;
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: normal;
+  cursor: pointer;
+  border-right: 1px solid #5b3d69;
+}
+
+.people-table th:last-child {
+  border-right: none;
+}
+
+.people-table th:hover {
+  background-color: #5b3d69;
+}
+
+.people-table .sort-icon {
+  margin-left: 5px;
+}
+
+.people-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.people-table tr:last-child td {
+  border-bottom: none;
+}
+
+.people-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.loading-cell, .error-cell, .empty-cell {
+  text-align: center;
+  padding: 20px 0 !important;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #4a2e58;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  gap: 8px;
+}
+
+.pagination-btn {
+  padding: 6px 12px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.pagination-btn.active {
+  background-color: #4a2e58;
+  color: white;
+  border-color: #4a2e58;
+}
+
+.pagination-btn:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 4px;
+}
+
+.pagination-ellipsis {
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.pagination-info {
+  margin-left: auto;
+  font-size: 14px;
+  color: #666;
+}
+
+.page-size-selector {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.page-size-selector select {
+  margin-left: 8px;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Filter Dialog Styles */
+.filter-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.filter-dialog {
+  background-color: white;
+  border-radius: 4px;
+  width: 550px;
+  max-width: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-dialog-header {
+  background-color: #2a1a33;
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.filter-dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.filter-icon {
+  font-style: normal;
+}
+
+.filter-dialog-close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.filter-dialog-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.close-icon {
+  font-style: normal;
+  color: #e74c3c;
+}
+
+.filter-dialog-content {
+  padding: 16px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.filter-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: flex-end;
+}
+
+.filter-column,
+.filter-relation,
+.filter-value {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-column label,
+.filter-relation label,
+.filter-value label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.filter-column select,
+.filter-relation select,
+.filter-value input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filter-value-container {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-value input {
+  flex: 1;
+}
+
+.remove-filter-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  height: 36px;
+  width: 36px;
+}
+
+.trash-icon {
+  font-style: normal;
+}
+
+.add-filter-row {
+  margin-top: 16px;
+}
+
+.add-filter-btn {
+  background: none;
+  border: none;
+  color: #4a2e58;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  padding: 8px 0;
+}
+
+.plus-icon {
+  font-style: normal;
+  color: #4a2e58;
+}
+
+.filter-dialog-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  border-top: 1px solid #eee;
+}
+
+.reset-filter-btn {
+  padding: 8px 16px;
+  background: none;
+  border: 1px solid #4a2e58;
+  color: #4a2e58;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.submit-filter-btn {
+  padding: 8px 16px;
+  background-color: #4a2e58;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.submit-filter-btn:hover {
+  background-color: #5b3d69;
+}
