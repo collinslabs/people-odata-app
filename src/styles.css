@@ -464,7 +464,7 @@ h2 {
 
 .close-icon {
   font-style: normal;
-  color: #e74c3c;
+  color: #7E1913;
 }
 
 .sort-dialog-content {
@@ -506,7 +506,7 @@ h2 {
 .remove-sort-btn {
   background: none;
   border: none;
-  color: #571e17;
+  color: #7E1913;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -518,6 +518,7 @@ h2 {
 
 .trash-icon {
   font-style: normal;
+  color: #7E1913;
 }
 
 .add-sort-row {
@@ -553,7 +554,7 @@ h2 {
   padding: 8px 16px;
   background: none;
   border: 1px solid #2F243A;
-  color: #52171a;
+  color: #7E1913;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
