@@ -2,13 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './styles.css';
 
 const SortDialog = ({ isOpen, onClose, onApplySorting, initialSortFields = [] }) => {
-  const [sortFields, setSortFields] = useState(
-    initialSortFields.length > 0 
-      ? initialSortFields 
-      : [{ column: '', order: 'Ascending' }]
-  );
+  const [sortFields, setSortFields] = useState([]);
 
- 
   useEffect(() => {
     if (isOpen && initialSortFields.length > 0) {
       setSortFields(initialSortFields);
@@ -38,17 +33,15 @@ const SortDialog = ({ isOpen, onClose, onApplySorting, initialSortFields = [] })
   };
 
   const handleSubmit = () => {
- 
     const validSortFields = sortFields.filter(field => field.column);
     onApplySorting(validSortFields);
     onClose();
   };
 
   const handleReset = () => {
-    setSortFields([{ column: '', order: 'Ascending' }]);
+    setSortFields([]);
   };
 
- 
   const availableColumns = [
     { value: 'UserName', label: 'Username' },
     { value: 'FirstName', label: 'First Name' },
@@ -105,7 +98,6 @@ const SortDialog = ({ isOpen, onClose, onApplySorting, initialSortFields = [] })
               <button
                 className="remove-filter-btn"
                 onClick={() => handleRemoveSorter(index)}
-                disabled={sortFields.length === 1}
               >
                 <span className="trash-icon">🗑️</span>
               </button>
@@ -130,6 +122,28 @@ const SortDialog = ({ isOpen, onClose, onApplySorting, initialSortFields = [] })
         </div>
       </div>
     </div>
+  );
+};
+
+// Example of a SortButton component that shows the count
+export const SortButton = ({ activeSortFields = [], onClick }) => {
+  const sortCount = activeSortFields.length;
+  
+  return (
+    <button 
+      className={`sort-button ${sortCount > 0 ? 'active' : ''}`}
+      onClick={onClick}
+    >
+      {sortCount > 0 ? `${sortCount} Sort` : 'Sort'}
+      {sortCount > 0 && (
+        <span className="clear-sort" onClick={(e) => {
+          e.stopPropagation();
+          
+        }}>
+          ✕
+        </span>
+      )}
+    </button>
   );
 };
 

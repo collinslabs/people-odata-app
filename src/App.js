@@ -8,9 +8,6 @@ function App() {
       <main>
         <PeopleTable />
       </main>
-      <footer className="App-footer">
-        <p>© {new Date().getFullYear()} - People OData Application</p>
-      </footer>
     </div>
   );
 }

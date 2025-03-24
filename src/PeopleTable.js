@@ -16,7 +16,7 @@ const PeopleTable = () => {
 
   const [sortFields, setSortFields] = useState([{ column: 'UserName', order: 'Ascending' }]);
   
-
+ 
   const [filters, setFilters] = useState({
     UserName: '',
     FirstName: '',

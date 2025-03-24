@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 
-const FilterDialog = ({ isOpen, onClose, onApplyFilters }) => {
-  const [filterRows, setFilterRows] = useState([{ column: '', relation: '', value: '' }]);
+const FilterDialog = ({ isOpen, onClose, onApplyFilters, activeFilters = [] }) => {
+  const [filterRows, setFilterRows] = useState([]);
   
- 
+  // Set initial filter rows from activeFilters when dialog opens
+  React.useEffect(() => {
+    if (isOpen && activeFilters.length > 0) {
+      setFilterRows(activeFilters);
+    }
+  }, [isOpen, activeFilters]);
+  
   const columns = [
     { value: '', label: 'Select Column' },
     { value: 'UserName', label: 'Username' },
@@ -15,7 +21,6 @@ const FilterDialog = ({ isOpen, onClose, onApplyFilters }) => {
     { value: 'Email', label: 'Email Address' }
   ];
   
- 
   const relations = [
     { value: '', label: 'Select Relation' },
     { value: 'eq', label: 'Equals' },
@@ -43,14 +48,13 @@ const FilterDialog = ({ isOpen, onClose, onApplyFilters }) => {
   };
   
   const handleSubmit = () => {
-   
     const validFilters = filterRows.filter(row => row.column && row.relation && row.value);
     onApplyFilters(validFilters);
     onClose();
   };
   
   const handleReset = () => {
-    setFilterRows([{ column: '', relation: '', value: '' }]);
+    setFilterRows([]);
   };
   
   if (!isOpen) return null;
@@ -103,14 +107,12 @@ const FilterDialog = ({ isOpen, onClose, onApplyFilters }) => {
                     value={filter.value}
                     onChange={(e) => handleFilterChange(index, 'value', e.target.value)}
                   />
-                  {filterRows.length > 1 && (
-                    <button 
-                      className="remove-filter-btn"
-                      onClick={() => handleRemoveFilter(index)}
-                    >
-                      <i className="trash-icon">🗑️</i>
-                    </button>
-                  )}
+                  <button 
+                    className="remove-filter-btn"
+                    onClick={() => handleRemoveFilter(index)}
+                  >
+                    <i className="trash-icon">🗑️</i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -133,6 +135,28 @@ const FilterDialog = ({ isOpen, onClose, onApplyFilters }) => {
         </div>
       </div>
     </div>
+  );
+};
+
+// Example of a FilterButton component that shows the count
+export const FilterButton = ({ activeFilters = [], onClick }) => {
+  const filterCount = activeFilters.length;
+  
+  return (
+    <button 
+      className={`filter-button ${filterCount > 0 ? 'active' : ''}`}
+      onClick={onClick}
+    >
+      {filterCount > 0 ? `${filterCount} Filter` : 'Filter'}
+      {filterCount > 0 && (
+        <span className="clear-filter" onClick={(e) => {
+          e.stopPropagation();
+          // Add logic to clear filters
+        }}>
+          ✕
+        </span>
+      )}
+    </button>
   );
 };
 
