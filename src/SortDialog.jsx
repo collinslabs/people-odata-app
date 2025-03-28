@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
+import sort from "./images/sorrt.png"
+import close from "./images/close.png"
+import deletee from "./images/delete.png";
+import plus from "./images/plus.png";
 
 const SortDialog = ({ isOpen, onClose, onApplySorting, initialSortFields = [] }) => {
   const [sortFields, setSortFields] = useState([]);
@@ -58,11 +62,11 @@ const SortDialog = ({ isOpen, onClose, onApplySorting, initialSortFields = [] })
       <div className="filter-dialog">
         <div className="filter-dialog-header">
           <div className="filter-dialog-title">
-            <span className="sort-icon">↑↓</span>
+            <img src={sort} alt="filter" className="sort-icon" />
             Sort Table
           </div>
           <button className="filter-dialog-close" onClick={onClose}>
-            ×
+            <img src={close} alt="close" className="close-icon" />
           </button>
         </div>
         
@@ -99,14 +103,14 @@ const SortDialog = ({ isOpen, onClose, onApplySorting, initialSortFields = [] })
                 className="remove-filter-btn"
                 onClick={() => handleRemoveSorter(index)}
               >
-                <span className="trash-icon">🗑️</span>
+                <img src={deletee} alt="trash" className="trash-icon" />
               </button>
             </div>
           ))}
           
           <div className="add-filter-row">
             <button className="add-filter-btn" onClick={handleAddSorter}>
-              <span className="plus-icon">+</span>
+            <img src={plus} alt="filter-plus" className="plus-icon" />
               Add Sorter
             </button>
           </div>

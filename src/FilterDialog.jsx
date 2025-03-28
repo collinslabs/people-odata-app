@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import filterplus from "./images/filter-plus.png";
+import filtervariant from "./images/filter-variant.png";
+import close from "./images/close.png";
+import deletee from "./images/delete.png";
 
 const FilterDialog = ({ isOpen, onClose, onApplyFilters, activeFilters = [] }) => {
   const [filterRows, setFilterRows] = useState([]);
   
-  // Set initial filter rows from activeFilters when dialog opens
   React.useEffect(() => {
     if (isOpen && activeFilters.length > 0) {
       setFilterRows(activeFilters);
@@ -64,14 +67,22 @@ const FilterDialog = ({ isOpen, onClose, onApplyFilters, activeFilters = [] }) =
       <div className="filter-dialog">
         <div className="filter-dialog-header">
           <div className="filter-dialog-title">
-            <i className="filter-icon">≡</i> Filter Table
+            <img src={filtervariant} alt="filter" className="filter-icon" />
+            Filter Table
           </div>
           <button className="filter-dialog-close" onClick={onClose}>
-            <i className="close-icon">✕</i>
+            <img src={close} alt="close" className="close-icon" />
           </button>
         </div>
         
         <div className="filter-dialog-content">
+          <div className="add-filter-row">
+            <button className="add-filter-btn" onClick={handleAddFilter}>
+              <img src={filterplus} alt="filter-plus" className="plus-icon" />
+              Add Filter
+            </button>
+          </div>
+          
           {filterRows.map((filter, index) => (
             <div className="filter-row" key={index}>
               <div className="filter-column">
@@ -111,18 +122,12 @@ const FilterDialog = ({ isOpen, onClose, onApplyFilters, activeFilters = [] }) =
                     className="remove-filter-btn"
                     onClick={() => handleRemoveFilter(index)}
                   >
-                    <i className="trash-icon">🗑️</i>
+                    <img src={deletee} alt="trash" className="trash-icon" />
                   </button>
                 </div>
               </div>
             </div>
           ))}
-          
-          <div className="add-filter-row">
-            <button className="add-filter-btn" onClick={handleAddFilter}>
-              <i className="plus-icon">+</i> Add Filter
-            </button>
-          </div>
         </div>
         
         <div className="filter-dialog-footer">
@@ -138,7 +143,6 @@ const FilterDialog = ({ isOpen, onClose, onApplyFilters, activeFilters = [] }) =
   );
 };
 
-// Example of a FilterButton component that shows the count
 export const FilterButton = ({ activeFilters = [], onClick }) => {
   const filterCount = activeFilters.length;
   
@@ -149,10 +153,13 @@ export const FilterButton = ({ activeFilters = [], onClick }) => {
     >
       {filterCount > 0 ? `${filterCount} Filter` : 'Filter'}
       {filterCount > 0 && (
-        <span className="clear-filter" onClick={(e) => {
-          e.stopPropagation();
-          // Add logic to clear filters
-        }}>
+        <span 
+          className="clear-filter" 
+          onClick={(e) => {
+            e.stopPropagation();
+            // Add logic to clear filters
+          }}
+        >
           ✕
         </span>
       )}
